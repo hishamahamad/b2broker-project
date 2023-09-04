@@ -1,0 +1,17 @@
+<table>
+  <tr *ngFor="let item of data">
+    <td>{{ item.id }}</td>
+    <td>{{ item.int }}</td>
+    <td>{{ item.float }}</td>
+    <td [style.background-color]="item.color">{{ item.color }}</td>
+    <td>
+      <!-- Render child table -->
+      <table>
+        <tr>
+          <td>{{ item.child.id }}</td>
+          <td [style.background-color]="item.child.color">{{ item.child.color }}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
