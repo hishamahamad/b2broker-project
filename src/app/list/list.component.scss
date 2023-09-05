@@ -1,0 +1,28 @@
+.parentTable {
+  border: 1px solid black;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 50vw;
+
+  th, td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .color-cell {
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  td {
+    padding: 8px;
+    text-align: center;
+  }
+
+  .childTable {
+    width: 100%;
+    border: 1px solid grey;
+    border-collapse: collapse;
+  }
+}

@@ -5,7 +5,7 @@ import { DataItem } from "./data.model";
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: [],
+  styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
   data: DataItem[] = [];
@@ -20,14 +20,13 @@ export class ListComponent implements OnInit {
 
       // Subscribe to messages from the Web Worker
       worker.onmessage = ({ data }) => {
-        console.log(`page got message: ${data}`);
         this.data = data;
       };
 
       worker.postMessage('Worker active');
 
       // Start the pseudo-socket and send data to the Web Worker
-      this.pseudoSocketService.startPseudoSocket(300, 1000).subscribe((pseudoSocketData) => {
+      this.pseudoSocketService.startPseudoSocket(300000, 1000).subscribe((pseudoSocketData) => {
         // Send the received data to the Web Worker for processing
         worker.postMessage(pseudoSocketData);
       });

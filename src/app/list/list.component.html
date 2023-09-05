@@ -1,15 +1,30 @@
-<table>
-  <tr *ngFor="let item of data">
+<table class="parentTable">
+  <tr>
+    <th>ID</th>
+    <th>Int</th>
+    <th>Float</th>
+    <th>Color</th>
+    <th>Child</th>
+  </tr>
+  <tr *ngFor="let item of data" class="row">
     <td>{{ item.id }}</td>
     <td>{{ item.int }}</td>
     <td>{{ item.float }}</td>
-    <td [style.background-color]="item.color">{{ item.color }}</td>
+    <td>
+      <div [style.background-color]="item.color" class="color-cell">{{ item.color }}</div>
+    </td>
     <td>
       <!-- Render child table -->
-      <table>
+      <table class="childTable">
+        <tr>
+          <th>ID</th>
+          <th>Color</th>
+        </tr>
         <tr>
           <td>{{ item.child.id }}</td>
-          <td [style.background-color]="item.child.color">{{ item.child.color }}</td>
+          <td>
+            <div [style.background-color]="item.child.color" class="color-cell">{{ item.child.color }}</div>
+          </td>
         </tr>
       </table>
     </td>
