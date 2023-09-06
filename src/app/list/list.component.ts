@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataItem } from "./data.model";
-import {spawnWorker} from "./workerFactory";
+import { spawnWorker } from "./workerFactory";
 
 @Component({
   selector: 'app-list',

@@ -1,6 +1,6 @@
 /// <reference lib="webworker" />
-import {DataItem} from "./data.model";
-import {startPseudoSocket} from "../../utils/pseudoSocket";
+import { DataItem } from "./data.model";
+import { startPseudoSocket } from "../../utils/pseudoSocket";
 
 addEventListener('message', ({data: {interval, dataSize, additionalIds}}) => {
   startPseudoSocket(interval, dataSize).subscribe((items) => {
