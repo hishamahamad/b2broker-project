@@ -1,13 +1,13 @@
 .container {
   border: 1px solid black;
-  width: 50vw;
+  margin: 10px;
   padding: 10px;
 
   .parent-table {
     border-collapse: separate;
     border-spacing: 0 10px;
     table-layout: fixed;
-    width: 50vw;
+    width: 100%;
 
     th, td {
       overflow: hidden;
@@ -20,15 +20,21 @@
       margin: 0 auto;
     }
 
+    .child-col {
+      width: 140px;
+    }
+
     td {
       border: 1px solid black;
       border-left: 0;
       border-right: 0;
       padding: 8px;
       text-align: center;
+
       &:first-child {
         border-left: 1px solid black;
       }
+
       &:last-child {
         border-right: 1px solid black;
       }
@@ -37,6 +43,7 @@
 
   .child-table {
     width: 100%;
+    min-width: 90px;
     border: 1px solid black;
     border-collapse: collapse;
 
