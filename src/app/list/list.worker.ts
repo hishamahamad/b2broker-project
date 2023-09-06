@@ -7,7 +7,7 @@ addEventListener('message', ({data: {interval, dataSize, additionalIds}}) => {
     // get only the last 10 items, and add the additional ids to first set of elements
     return postMessage(items.slice(-10).map((item: DataItem, index: number) => ({
       ...item,
-      id: additionalIds[index] ?? item.id
+      id: additionalIds[index]?.toString() ?? item.id
     })));
   })
 });

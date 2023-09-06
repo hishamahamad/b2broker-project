@@ -1,5 +1,7 @@
 import { DataItem } from "../app/list/data.model";
 
+export const colors = ['red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown', 'gray', 'cyan'];
+
 // random data generator
 export function generateData(dataSize: number): DataItem[] {
   function getRandomId(): string {
@@ -7,7 +9,6 @@ export function generateData(dataSize: number): DataItem[] {
   }
 
   function getRandomColor(): string {
-    const colors = ['red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown', 'gray', 'cyan'];
     return colors[Math.floor(Math.random() * 10)];
   }
 
