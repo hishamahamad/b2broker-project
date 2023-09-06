@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PseudoSocketService } from './pseudo-socket.service';
 import { DataItem } from "./data.model";
 
 @Component({
@@ -9,8 +8,11 @@ import { DataItem } from "./data.model";
 })
 export class ListComponent implements OnInit {
   data: DataItem[] = [];
+  interval: number = 300;
+  dataSize: number = 10000000;
+  additionalIds: number[] = [228, 522, 904];
 
-  constructor(private pseudoSocketService: PseudoSocketService) {}
+  constructor() {}
 
   ngOnInit(): void {
     // Initialize the Web Worker
@@ -23,13 +25,8 @@ export class ListComponent implements OnInit {
         this.data = data;
       };
 
-      worker.postMessage('Worker active');
-
-      // Start the pseudo-socket and send data to the Web Worker
-      this.pseudoSocketService.startPseudoSocket(300000, 1000).subscribe((pseudoSocketData) => {
-        // Send the received data to the Web Worker for processing
-        worker.postMessage(pseudoSocketData);
-      });
+      // Post the OPEN message to webworker, to trigger pseudosocket
+      worker.postMessage({ event: 'OPEN', interval: this.interval, dataSize: this.dataSize, additionalIds: this.additionalIds });
     } else {
       // Web workers are not supported in this environment.
       // You should add a fallback so that your program still executes correctly.
